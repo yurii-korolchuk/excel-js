@@ -1,0 +1,14 @@
+@mixin button($color: green, $size: 24px)
+  transition: 0.4s all
+  background: none
+  border: none
+  cursor: pointer
+  span
+    font-size: $size
+  &:hover
+    background: rgba(0, 0, 0, .3)
+  &:active
+    span
+      color: $color
+  &:focus
+    outline: none
