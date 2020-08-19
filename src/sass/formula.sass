@@ -1,2 +1,22 @@
 @import "variables"
 @import "mixins"
+
+.formula
+  height: 40px
+  padding: 0.5rem
+  border-bottom: 1px solid grey
+  display: flex
+  &__fx
+    font-size: 1.5rem
+    line-height: 2.5rem
+    padding-right: 1rem
+    color: grey
+    font-style: italic
+    border-right: 1px solid grey
+  &__input
+    height: 100%
+    width: 100%
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem
+    font-size: 1.5rem
+    &:focus
+      outline: none
