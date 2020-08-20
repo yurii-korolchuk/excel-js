@@ -1,0 +1,27 @@
+@import "variables"
+@import "mixins"
+
+.row
+  display: flex
+  flex-direction: row
+  &__index
+    font-size: 1.3rem
+    color: lightslategrey
+    border: 1px solid grey
+    border-top: none
+    border-left: none
+    text-align: center
+    min-width: 3rem
+    padding: 0.1rem
+    height: 25px
+    line-height: 22px
+    background-color: #F8F9FA
+    cursor: pointer
+  &__data
+    @include column()
+    background-color: #F8F9FA
+    text-align: center
+  &__column
+    @include column(lightgrey)
+    outline: none
+    color: black
