@@ -1,0 +1,27 @@
+@mixin button($color: green, $hoverColor: black, $size: 24px)
+  transition: 0.4s all
+  background: none
+  border: none
+  cursor: pointer
+  span
+    font-size: $size
+  &:hover
+    background: rgba(0, 0, 0, .15)
+    span
+      color: $hoverColor
+  &:active
+    background: none
+    span
+      color: $color
+  &:focus
+    outline: none
+@mixin column($borderColor: lightslategrey)
+  min-width: 115px
+  padding: 0.1rem
+  font-size: 1.3rem
+  color: lightslategrey
+  border: 1px solid $borderColor
+  border-top: none
+  border-left: none
+  line-height: 22px
+  cursor: pointer

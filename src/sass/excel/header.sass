@@ -1,0 +1,33 @@
+@import "src/sass/variables"
+@import "src/sass/mixins"
+
+.header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  &__name
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    span
+      font-size: 50px
+      color: green
+      cursor: pointer
+    input
+      transition: 0.3s all
+      color: grey
+      font-size: 18px
+      line-height: 28px
+      outline: none
+      border: 1px solid transparent
+      border-radius: 4px
+      width: 65%
+      padding: .2rem
+      &:hover
+        border: 1px solid grey
+      &:focus
+        border: 2px solid dodgerblue
+        color: black
+  &__buttons
+    button
+      @include button(red, black, 36px)

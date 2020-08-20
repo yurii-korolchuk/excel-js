@@ -1,0 +1,26 @@
+@import "src/sass/variables"
+@import "src/sass/mixins"
+
+.dashboard
+  &__new
+    min-height: 200px
+    background-color: lightgrey
+    display: flex
+    justify-content: center
+    align-items: center
+    div
+      height: 160px
+      width: 160px
+      background-color: white
+      display: flex
+      justify-content: center
+      align-items: center
+      &:hover
+        border: 1px solid green
+        a
+          color: green
+      a
+        text-decoration: none
+        font-size: 2.5rem
+        text-align: center
+        color: black

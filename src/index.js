@@ -1,1 +1,1 @@
-console.log(232)
+import './sass/index.sass'
