@@ -1,9 +1,20 @@
-import {ExcelComponent} from "core/ExcelComponent";
+import {$} from 'core/dom'
 
-export class Excel extends ExcelComponent {
+export class Excel {
     constructor(containerSelector, {components = []} = {}) {
-        super();
         this.container = document.querySelector(containerSelector)
         this.components = components;
+    }
+
+    getRoot() {
+        const root = $.create('div', 'excel')
+        this.components.forEach(Component => {
+            root.append($.create('div', Component.className))
+        })
+        return root
+    }
+
+    render() {
+        this.container.appendChild(this.getRoot())
     }
 }
