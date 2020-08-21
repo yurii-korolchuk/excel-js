@@ -15,7 +15,8 @@
     "quotes": "off",
     "comma-dangle": "off",
     "indent": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "padded-blocks": "warn"
   },
   "extends": ["eslint:recommended", "google"]
 }
