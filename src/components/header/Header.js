@@ -9,4 +9,7 @@ export class Header extends ExcelComponent {
     }
 
     static className = 'header'
+
+    onInput() {}
+    onClick() {}
 }
