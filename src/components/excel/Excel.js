@@ -11,7 +11,7 @@ export class Excel {
         this.components = this.components.map(Component => {
             const el = $.create('div', Component.className)
             const component = new Component(el)
-            root.append(component.toHTML())
+            root.html(component.toHTML())
             return component
         })
         return root.el
