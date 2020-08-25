@@ -3,7 +3,7 @@ const CODES = {
     Z: 90
 }
 
-const stringFromChar = (index) => {
+const stringFromChar = (_, index) => {
     return String.fromCharCode(CODES.A + index)
 }
 
@@ -12,18 +12,18 @@ const columnIndex = (el) => {
 }
 
 const getColumnIndexes = (length) => {
-    const arr = []
-    for (let i = 0; i < length; i++) {
-        arr.push(columnIndex(stringFromChar(i)))
-    }
-    return arr.join('')
+    return new Array(length)
+        .fill('')
+        .map(stringFromChar)
+        .map(columnIndex)
+        .join('')
 }
 
 const getRow = (index, length = CODES.Z - CODES.A + 1) => {
-    let cells = ''
-    for (let i = 0; i < length; i++) {
-        cells+= `<div class="row__column" contenteditable spellcheck="false"></div>`
-    }
+    const cells = new Array(length)
+        .fill('')
+        .map(el => '<div class="row__column" contenteditable spellcheck="false"></div>')
+        .join('')
     return `
         <div class="row">
             <div class="row__index">${index}</div>
@@ -33,11 +33,10 @@ const getRow = (index, length = CODES.Z - CODES.A + 1) => {
 }
 
 const createRow = (length = 15) => {
-    let rowIndexes = ''
-    for (let i = 1; i < length + 1; i++) {
-        rowIndexes += getRow(i)
-    }
-    return rowIndexes
+    return new Array(length)
+        .fill('')
+        .map((el, i) => getRow(i))
+        .join('')
 }
 
 const createColumnIndexes = (columnIndexesLength) => {
