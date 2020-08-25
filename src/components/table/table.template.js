@@ -20,9 +20,13 @@ const getColumnIndexes = (length) => {
 }
 
 const getRow = (index, length = CODES.Z - CODES.A + 1) => {
+    const template = `<div class="row__column" 
+                           contenteditable 
+                           spellcheck="false">
+                      </div>`
     const cells = new Array(length)
         .fill('')
-        .map(el => '<div class="row__column" contenteditable spellcheck="false"></div>')
+        .map(el => template)
         .join('')
     return `
         <div class="row">
@@ -35,7 +39,7 @@ const getRow = (index, length = CODES.Z - CODES.A + 1) => {
 const createRow = (length = 15) => {
     return new Array(length)
         .fill('')
-        .map((el, i) => getRow(i))
+        .map((el, i) => getRow(i + 1))
         .join('')
 }
 

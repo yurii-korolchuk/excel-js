@@ -15,6 +15,7 @@
     "quotes": "off",
     "comma-dangle": "off",
     "indent": "off",
+    "operator-linebreak": "off",
     "no-unused-vars": "warn",
     "padded-blocks": "warn"
   },

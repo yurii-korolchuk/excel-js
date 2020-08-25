@@ -13,7 +13,8 @@ export class DomListener {
             const method = getMethodName(capitalize(listener))
             if (!this[method]) {
                 const name = `in ${this.name}`
-                throw new Error(`No implementation provided for ${method} ${name}`)
+                const message = `No implementation provided for ${method} ${name}`
+                throw new Error(message)
             }
             this[method] = this[method].bind(this)
             this.root.on(listener, this[method])
