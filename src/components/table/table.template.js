@@ -8,7 +8,12 @@ const stringFromChar = (_, index) => {
 }
 
 const columnIndex = (el) => {
-    return `<div class="row__data">${el}</div>`
+    return `<div class="row__data"> 
+                <div class="row__text">${el}</div>
+                <div class="col__resize"></div> 
+            </div>
+            
+    `
 }
 
 const getColumnIndexes = (length) => {
@@ -30,7 +35,10 @@ const getRow = (index, length = CODES.Z - CODES.A + 1) => {
         .join('')
     return `
         <div class="row">
-            <div class="row__index">${index}</div>
+            <div class="row__index">
+                <div class="index">${index}</div> 
+                <div class="row__resize"></div>
+            </div>
             ${cells}
         </div>
     `

@@ -5,7 +5,7 @@
   display: flex
   flex-direction: row
   &__index
-    font-size: 1.3rem
+    font-size: 1rem
     color: lightslategrey
     border: 1px solid grey
     border-top: none
@@ -17,11 +17,35 @@
     line-height: 22px
     background-color: #F8F9FA
     cursor: pointer
+    .index
+      width: 106%
+      height: 20px
+  &__text
+    width: 10%
   &__data
     @include column()
+    display: flex
+    justify-content: center
     background-color: #F8F9FA
     text-align: center
   &__column
     @include column(lightgrey)
+    cursor: cell
     outline: none
     color: black
+  &__resize
+    width: 106%
+    height: 4px
+    cursor: ns-resize
+    &:hover
+      background-color: dodgerblue
+
+.col__resize
+  display: inline-block
+  position: relative
+  right: -4.15rem
+  height: 106%
+  width: 4px
+  cursor: ew-resize
+  &:hover
+    background-color: dodgerblue
