@@ -5,14 +5,19 @@ export class Table extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Table',
-            listeners: ['input', 'click']
+            listeners: ['mousedown', 'mousemove', 'mouseup']
         })
     }
     static className = 'table'
 
-    onInput() {}
-    onClick() {}
+    onMousedown() {
+        console.log('down')
+    }
+    onMousemove() {
+        console.log('mouseMove')
+    }
 
+    onMouseup() {}
     toHTML() {
         return createTable()
     }
