@@ -45,6 +45,15 @@ export class Table extends ExcelComponent {
 
                 document.onmouseup = e => {
                     parent.style[styleType] = +delta + +initialSize + 'px'
+                    const cellDataCheck = type
+                        ? 'data-cell-info'
+                        : 'data-cell-index'
+                    const index = parent.dataset.index
+                    console.log(index)
+                    document.querySelectorAll(`[${cellDataCheck}="${index}"]`)
+                        .forEach(item => {
+                            item.style[styleType] = window.getComputedStyle(parent)[styleType]
+                        })
                     target.style[position] = ''
                     document.onmousemove = null
                     document.onmouseup = null

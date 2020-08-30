@@ -8,7 +8,7 @@ const stringFromChar = (_, index) => {
 }
 
 const columnIndex = (el) => {
-    return `<div class="row__data" data-type="resizable"> 
+    return `<div class="row__data" data-type="resizable" data-index=${el}> 
                 <div class="row__text">${el}</div>
                 <div class="col__resize" data-resize="col"></div> 
             </div>       
@@ -24,17 +24,21 @@ const getColumnIndexes = (length) => {
 }
 
 const getRow = (index, length = CODES.Z - CODES.A + 1) => {
-    const template = `<div class="row__column" 
-                           contenteditable 
-                           spellcheck="false">
-                      </div>`
+    const template = (_, info) => {
+        return `<div class="row__column" 
+                     contenteditable 
+                     spellcheck="false"
+                     data-cell-index=${index}
+                     data-cell-info=${stringFromChar(null, info)}>
+                </div>`
+    }
     const cells = new Array(length)
         .fill('')
-        .map(el => template)
+        .map((el, i) => template(el, i))
         .join('')
     return `
         <div class="row">
-            <div class="row__index" data-type="resizable">
+            <div class="row__index" data-type="resizable" data-index=${index}>
                 <div class="index">${index}</div> 
                 <div class="row__resize" data-resize="row"></div>
             </div>
