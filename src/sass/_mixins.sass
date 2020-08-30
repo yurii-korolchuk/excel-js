@@ -15,9 +15,10 @@
       color: $color
   &:focus
     outline: none
-@mixin column($borderColor: lightslategrey)
-  min-width: 115px
-  padding: 0.1rem
+@mixin column($borderColor: lightslategrey, $width: 30px)
+  width: $width
+  min-width: 30px
+  min-height: 25px
   font-size: 1.3rem
   color: lightslategrey
   border: 1px solid $borderColor

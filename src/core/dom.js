@@ -3,6 +3,7 @@ class Dom {
         this.el = typeof selector === 'string'
             ? document.querySelector(selector)
             : selector
+        this.style = this.el.style
     }
 
     html(newHTML) {
@@ -37,6 +38,10 @@ class Dom {
 
     off(eventType, callback) {
         this.el.removeEventListener(eventType, callback)
+    }
+
+    closest(selector) {
+        return this.el.closest(selector)
     }
 
 }

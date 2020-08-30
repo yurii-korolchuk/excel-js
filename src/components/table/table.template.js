@@ -8,11 +8,10 @@ const stringFromChar = (_, index) => {
 }
 
 const columnIndex = (el) => {
-    return `<div class="row__data"> 
+    return `<div class="row__data" data-type="resizable"> 
                 <div class="row__text">${el}</div>
-                <div class="col__resize"></div> 
-            </div>
-            
+                <div class="col__resize" data-resize="col"></div> 
+            </div>       
     `
 }
 
@@ -35,9 +34,9 @@ const getRow = (index, length = CODES.Z - CODES.A + 1) => {
         .join('')
     return `
         <div class="row">
-            <div class="row__index">
+            <div class="row__index" data-type="resizable">
                 <div class="index">${index}</div> 
-                <div class="row__resize"></div>
+                <div class="row__resize" data-resize="row"></div>
             </div>
             ${cells}
         </div>
