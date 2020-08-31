@@ -3,7 +3,6 @@ class Dom {
         this.el = typeof selector === 'string'
             ? document.querySelector(selector)
             : selector
-        this.style = this.el.style
     }
 
     html(newHTML) {
@@ -13,6 +12,14 @@ class Dom {
         } else {
             return this.el.innerHTML
         }
+    }
+
+    get style() {
+        return this.el.style
+    }
+
+    get data() {
+        return this.el.dataset
     }
 
     clear() {
@@ -42,6 +49,18 @@ class Dom {
 
     closest(selector) {
         return this.el.closest(selector)
+    }
+
+    findAll(selector) {
+        return this.el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        Object.keys(styles).forEach(key => {
+            if (this.style[key]) {
+                this.style[key] = styles[key]
+            }
+        })
     }
 
 }

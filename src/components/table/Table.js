@@ -27,11 +27,10 @@ export class Table extends ExcelComponent {
             event.preventDefault()
             const target = $(event.target)
             const parent = target.closest('[data-type="resizable"]')
-            const type = event.target.dataset.resize === 'col'
+            const type = target.data.resize === 'col'
             const styleType = type ? 'width' : 'height'
             const initialSize = Math.round(+getComputedStyle(parent)[styleType]
                 .replace(/[a-z]/ig, ''))
-            console.log(initialSize)
 
             document.onmousemove = e => {
                 const clientCoord = type ? e.clientX : e.clientY
@@ -50,7 +49,7 @@ export class Table extends ExcelComponent {
                         : 'data-cell-index'
                     const index = parent.dataset.index
                     console.log(index)
-                    document.querySelectorAll(`[${cellDataCheck}="${index}"]`)
+                    this.root.findAll(`[${cellDataCheck}="${index}"]`)
                         .forEach(item => {
                             item.style[styleType] = window.getComputedStyle(parent)[styleType]
                         })
