@@ -6,7 +6,7 @@ import {Table} from "@/components/table/Table";
 import './sass/index.sass'
 
 const excel = new Excel('#app', {
-    components: [Header, Toolbar, Formula, Table]
+    components: [Table]
 })
 
 excel.render()

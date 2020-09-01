@@ -1,0 +1,10 @@
+@import "src/sass/variables"
+@import "src/sass/mixins"
+
+.cell
+  @include column(lightgrey, 115px)
+  cursor: cell
+  outline: none
+  color: black
+  &:nth-child(2)
+    margin-left: 3rem

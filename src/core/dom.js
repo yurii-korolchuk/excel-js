@@ -14,6 +14,14 @@ class Dom {
         }
     }
 
+    get style() {
+        return this.el.style
+    }
+
+    get data() {
+        return this.el.dataset
+    }
+
     clear() {
         this.el.innerHTML = ''
         return this
@@ -37,6 +45,22 @@ class Dom {
 
     off(eventType, callback) {
         this.el.removeEventListener(eventType, callback)
+    }
+
+    closest(selector) {
+        return this.el.closest(selector)
+    }
+
+    findAll(selector) {
+        return this.el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        Object.keys(styles).forEach(key => {
+            if (this.style[key]) {
+                this.style[key] = styles[key]
+            }
+        })
     }
 
 }
