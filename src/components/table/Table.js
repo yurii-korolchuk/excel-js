@@ -14,7 +14,7 @@ export class Table extends ExcelComponent {
     onClick(event) {
         if (event.target.hasAttribute('contenteditable')) {
             const target = event.target
-            document.querySelectorAll('[data-selected="true"]')
+            this.root.findAll('[data-selected="true"]')
                 .forEach(item => {
                     item.removeAttribute('data-selected')
                 })
