@@ -8,8 +8,8 @@ const stringFromChar = (_, index) => {
 }
 
 const columnIndex = (el) => {
-    return `<div class="row__data" data-type="resizable" data-index=${el}> 
-                <div class="row__text">${el}</div>
+    return `<div class="col__data" data-type="resizable" data-index=${el}> 
+                <div class="col__text">${el}</div>
                 <div class="col__resize" data-resize="col"></div> 
             </div>       
     `
@@ -25,7 +25,7 @@ const getColumnIndexes = (length) => {
 
 const getRow = (index, length = CODES.Z - CODES.A + 1) => {
     const template = (_, info) => {
-        return `<div class="row__column" 
+        return `<div class="cell" 
                      contenteditable 
                      spellcheck="false"
                      data-cell-index=${index}

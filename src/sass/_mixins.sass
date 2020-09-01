@@ -25,3 +25,21 @@
   border-top: none
   border-left: none
   line-height: 22px
+
+@mixin resize($cursor-type, $after-height: auto, $after-width: auto)
+  position: absolute
+  z-index: 3
+  cursor: $cursor-type
+  &:after
+    display: none
+    content: ''
+    position: absolute
+    height: $after-height
+    width: $after-width
+    background-color: dodgerblue
+  &:hover
+    background-color: dodgerblue
+  &:active
+    background-color: dodgerblue
+    &:after
+      display: block

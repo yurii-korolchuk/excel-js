@@ -13,60 +13,8 @@
     .index
       width: 100%
       height: 20px
-  &__text
-    width: 15%
-  &__data
-    @include column(lightslategrey, 115px)
-    display: flex
-    justify-content: center
-    background-color: #F8F9FA
-    text-align: center
-    position: relative
-  &__column
-    @include column(lightgrey, 115px)
-    cursor: cell
-    outline: none
-    color: black
   &__resize
-    position: absolute
+    @include resize(ns-resize, .3rem, 55vw)
     bottom: 0
     width: 100%
     height: .3rem
-    cursor: ns-resize
-    z-index: 3
-    &:after
-      display: none
-      content: ''
-      position: absolute
-      width: 55vw
-      height: 2px
-      margin-top: 2px
-      background-color: dodgerblue
-    &:hover
-      background-color: dodgerblue
-    &:active
-      background-color: dodgerblue
-      &:after
-        display: block
-.col__resize
-  display: inline-block
-  position: absolute
-  right: 0
-  height: 100%
-  width: .3rem
-  cursor: ew-resize
-  z-index: 3
-  &:after
-    display: none
-    content: ''
-    position: absolute
-    height: 55vh
-    width: 2px
-    margin-left: 2px
-    background-color: dodgerblue
-  &:hover
-    background-color: dodgerblue
-  &:active
-    background-color: dodgerblue
-    &:after
-      display: block
