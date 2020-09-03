@@ -62,7 +62,6 @@ class Dom {
             }
         })
     }
-
 }
 
 export function $(selector) {

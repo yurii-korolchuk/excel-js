@@ -12,8 +12,8 @@ export class DomListener {
         this.listeners.forEach(listener => {
             const method = getMethodName(capitalize(listener))
             if (!this[method]) {
-                const name = `in ${this.name}`
-                const message = `No implementation provided for ${method} ${name}`
+                const name = `for ${method} in ${this.name}`
+                const message = `No implementation provided ${name}`
                 throw new Error(message)
             }
             this[method] = this[method].bind(this)

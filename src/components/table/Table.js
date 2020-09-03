@@ -6,7 +6,8 @@ export class Table extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Table',
-            listeners: ['click', 'mousedown']
+            listeners: ['click', 'mousedown'],
+            ...options
         })
     }
     static className = 'table'
@@ -51,7 +52,8 @@ export class Table extends ExcelComponent {
                     console.log(index)
                     this.root.findAll(`[${cellDataCheck}="${index}"]`)
                         .forEach(item => {
-                            item.style[styleType] = window.getComputedStyle(parent)[styleType]
+                            item.style[styleType] = window
+                                .getComputedStyle(parent)[styleType]
                         })
                     target.style[position] = ''
                     document.onmousemove = null
