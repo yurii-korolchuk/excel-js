@@ -1,6 +1,7 @@
 import {ExcelComponent} from "core/ExcelComponent";
 import {createTable} from "@/components/table/table.template";
 import {$} from "core/dom";
+import {TableSelection} from "@/components/table/TableSelection";
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {
@@ -11,6 +12,12 @@ export class Table extends ExcelComponent {
         })
     }
     static className = 'table'
+
+    init() {
+        super.init();
+        const selection = new TableSelection()
+        selection.select(this.root.find('[data-id="A1"]'))
+    }
 
     onClick(event) {
         if (event.target.hasAttribute('contenteditable')) {

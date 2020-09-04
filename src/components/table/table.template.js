@@ -25,12 +25,14 @@ const getColumnIndexes = (length) => {
 
 const getRow = (index, length = CODES.Z - CODES.A + 1) => {
     const template = (_, info) => {
+        const id = `${stringFromChar(null, info)}${index}`
         return `<div class="cell" 
                      contenteditable 
                      spellcheck="false"
                      data-cell-index=${index}
-                     data-cell-info=${stringFromChar(null, info)}>
-                </div>`
+                     data-cell-info=${stringFromChar(null, info)}
+                     data-id=${id}
+                     ></div>`
     }
     const cells = new Array(length)
         .fill('')

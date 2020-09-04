@@ -51,6 +51,10 @@ class Dom {
         return this.el.closest(selector)
     }
 
+    find(selector) {
+        return $(this.el.querySelector(selector))
+    }
+
     findAll(selector) {
         return this.el.querySelectorAll(selector)
     }
@@ -61,6 +65,14 @@ class Dom {
                 this.style[key] = styles[key]
             }
         })
+    }
+
+    addClass(classSelector) {
+        this.el.classList.add(classSelector)
+    }
+
+    removeClass(classSelector) {
+        this.el.classList.remove(classSelector)
     }
 }
 
