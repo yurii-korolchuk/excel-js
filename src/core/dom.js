@@ -74,6 +74,10 @@ class Dom {
     removeClass(classSelector) {
         this.el.classList.remove(classSelector)
     }
+
+    removeAttr(attr) {
+        this.el.removeAttribute(attr)
+    }
 }
 
 export function $(selector) {
