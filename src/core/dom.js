@@ -75,6 +75,10 @@ class Dom {
         this.el.classList.remove(classSelector)
     }
 
+    addAttr(attr, value = true) {
+        this.el.setAttribute(attr, value)
+    }
+
     removeAttr(attr) {
         this.el.removeAttribute(attr)
     }

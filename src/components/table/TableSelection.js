@@ -1,4 +1,5 @@
 export class TableSelection {
+    static dataSelector = 'data-selected'
     constructor() {
         this.group = []
     }
@@ -6,14 +7,17 @@ export class TableSelection {
     select(el) {
         this.clear()
         this.group.push(el)
-        el.data.selected = 'true'
+        el.addAttr(TableSelection.dataSelector)
     }
 
-    selectGroup() {}
+    selectGroup(el) {
+        this.group.push(el)
+        el.addAttr(TableSelection.dataSelector)
+    }
 
     clear() {
         this.group.forEach(item => {
-            item.removeAttr('data-selected')
+            item.removeAttr(TableSelection.dataSelector)
         })
         this.group = []
     }

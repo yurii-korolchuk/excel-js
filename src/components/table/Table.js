@@ -26,7 +26,11 @@ export class Table extends ExcelComponent {
             resize(this, event)
         } else if (isCell(event)) {
             const target = $(event.target)
-            this.selection.select(target)
+            if (event.ctrlKey) {
+                this.selection.selectGroup(target)
+            } else {
+                this.selection.select(target)
+            }
         }
     }
 
