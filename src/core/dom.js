@@ -52,7 +52,11 @@ class Dom {
     }
 
     find(selector) {
-        return $(this.el.querySelector(selector))
+        if (this.el.querySelector(selector)) {
+            return $(this.el.querySelector(selector))
+        } else {
+            return null
+        }
     }
 
     findAll(selector) {
@@ -92,11 +96,19 @@ class Dom {
     }
 
     get nextSibling() {
-        return $(this.el.nextElementSibling)
+        if (this.el.nextElementSibling) {
+            return $(this.el.nextElementSibling)
+        } else {
+            return null
+        }
     }
 
     get parent() {
-        return $(this.el.parentElement)
+        if (this.el.parentElement) {
+            return $(this.el.parentElement)
+        } else {
+            return null
+        }
     }
 
     focus() {

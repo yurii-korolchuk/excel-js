@@ -44,9 +44,15 @@ export class Table extends ExcelComponent {
     }
 
     onKeydown(event) {
-        if (event.code === 'Tab') {
-            event.preventDefault()
-            this.selection.selectNextByRow()
+        switch (event.code) {
+            case 'Tab':
+                event.preventDefault()
+                this.selection.selectNextInRow()
+                break
+            case 'Enter':
+                event.preventDefault()
+                this.selection.selectNextInCol(this.root)
+                break
         }
     }
 
