@@ -41,6 +41,20 @@ export const shouldResize = (event) => {
     return event.target.dataset.resize
 }
 
-export const isCell = (event) => {
-    return event.target.hasAttribute('contenteditable')
+export const isCell = (event, attributeToCheck) => {
+    return event.target.hasAttribute(attributeToCheck)
+}
+
+export const range = (start, end) => {
+    if (start > end) [start, end] = [end, start]
+
+    return new Array(end - start + 1)
+        .fill('')
+        .map((el, index) => {
+            return `${+start + index}`
+        })
+}
+
+export const numberFromChar = (char) => {
+    return char.charCodeAt(0)
 }

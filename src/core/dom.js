@@ -82,6 +82,10 @@ class Dom {
     removeAttr(attr) {
         this.el.removeAttribute(attr)
     }
+
+    id() {
+        return this.el.data.id
+    }
 }
 
 export function $(selector) {

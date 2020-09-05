@@ -3,8 +3,9 @@ const CODES = {
     Z: 90
 }
 
-const stringFromChar = (_, index) => {
+export const stringFromChar = (_, index) => {
     return String.fromCharCode(CODES.A + index)
+
 }
 
 const columnIndex = (el) => {
