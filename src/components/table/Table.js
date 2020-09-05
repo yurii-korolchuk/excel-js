@@ -23,7 +23,9 @@ export class Table extends ExcelComponent {
     init() {
         super.init()
         this.selection = new TableSelection()
-        this.selection.select(this.root.find('[data-id="A1"]'))
+        const current = this.root.find('[data-id="A1"]')
+        current.focus()
+        this.selection.select(current)
     }
 
     onMousedown(event) {
@@ -41,8 +43,11 @@ export class Table extends ExcelComponent {
         }
     }
 
-    onKeydown() {
-
+    onKeydown(event) {
+        if (event.code === 'Tab') {
+            event.preventDefault()
+            this.selection.selectNextByRow()
+        }
     }
 
     toHTML() {

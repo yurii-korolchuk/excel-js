@@ -69,22 +69,39 @@ class Dom {
 
     addClass(classSelector) {
         this.el.classList.add(classSelector)
+        return this
     }
 
     removeClass(classSelector) {
         this.el.classList.remove(classSelector)
+        return this
     }
 
     addAttr(attr, value = true) {
         this.el.setAttribute(attr, value)
+        return this
     }
 
     removeAttr(attr) {
         this.el.removeAttribute(attr)
+        return this
     }
 
     id() {
         return this.el.data.id
+    }
+
+    get nextSibling() {
+        return $(this.el.nextElementSibling)
+    }
+
+    get parent() {
+        return $(this.el.parentElement)
+    }
+
+    focus() {
+        this.el.focus()
+        return this
     }
 }
 

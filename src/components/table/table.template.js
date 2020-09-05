@@ -50,7 +50,7 @@ const getRow = (index, length = CODES.Z - CODES.A + 1) => {
     `
 }
 
-const createRow = (length = 15) => {
+const createRow = (length = 3) => {
     return new Array(length)
         .fill('')
         .map((el, i) => getRow(i + 1))
