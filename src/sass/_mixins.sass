@@ -28,7 +28,6 @@
 
 @mixin resize($cursor-type, $after-height: auto, $after-width: auto)
   position: absolute
-  z-index: 4
   cursor: $cursor-type
   &:after
     display: none
@@ -41,5 +40,6 @@
     background-color: dodgerblue
   &:active
     background-color: dodgerblue
+    z-index: 4
     &:after
       display: block

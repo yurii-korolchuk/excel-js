@@ -37,6 +37,31 @@ export const resize = (el, event) => {
     }
 }
 
+export const section = (el, target, selection) => {
+    const current = selection.current
+
+    const startCol = numberFromChar(current.data.cellInfo)
+    const endCol = numberFromChar(target.data.cellInfo)
+    const startRow = +current.data.cellIndex
+    const endRow = +target.data.cellIndex
+
+    const cols = range(startCol, endCol)
+    const rows = range(startRow, endRow)
+    const ids = []
+
+    cols.map(el => {
+        rows.forEach(row => {
+            ids.push(`${String.fromCharCode(+el)}${+row}`)
+        })
+    })
+
+    const idsmap = ids.map(ids => {
+        return el.root.find(`[data-id="${ids}"]`)
+    })
+
+    selection.createSelection(idsmap)
+}
+
 export const shouldResize = (event) => {
     return event.target.dataset.resize
 }
