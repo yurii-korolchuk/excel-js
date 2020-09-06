@@ -14,7 +14,7 @@ export class Table extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Table',
-            listeners: ['mousedown', 'keydown'],
+            listeners: ['mousedown', 'keydown', 'input'],
             ...options
         })
     }
@@ -24,7 +24,6 @@ export class Table extends ExcelComponent {
         super.init()
         this.selection = new TableSelection()
         const current = this.root.find('[data-id="A1"]')
-        current.focus()
         this.selection.select(current)
 
         this.$observe('formula-input', data => {
@@ -33,10 +32,11 @@ export class Table extends ExcelComponent {
         })
 
         this.$observe('formula-unfocus', event => {
-            event.preventDefault()
             event.target.blur()
             this.selection.current.focus()
         })
+
+        this.$trigger('table-change', this.selection.current.text())
     }
 
     onMousedown(event) {
@@ -54,25 +54,34 @@ export class Table extends ExcelComponent {
         }
     }
 
+    changeCell(n, method) {
+        this.selection[method](this.root, n)
+        this.$trigger('table-change', this.selection.current.text())
+    }
+
     onKeydown(event) {
         switch (event.code) {
             case 'Tab': case 'ArrowRight':
                 event.preventDefault()
-                this.selection.selectNextInRow(this.root, 1)
+                this.changeCell(1, 'selectNextInRow')
                 break
             case 'Enter': case 'ArrowDown':
                 event.preventDefault()
-                this.selection.selectNextInCol(this.root, 1)
+                this.changeCell(1, 'selectNextInCol')
                 break
             case 'ArrowUp':
                 event.preventDefault()
-                this.selection.selectNextInCol(this.root, -1)
+                this.changeCell(-1, 'selectNextInCol')
                 break
             case 'ArrowLeft':
                 event.preventDefault()
-                this.selection.selectNextInRow(this.root, -1)
+                this.changeCell(-1, 'selectNextInRow')
                 break
         }
+    }
+
+    onInput(event) {
+        this.$trigger('table-input', $(event.target).text())
     }
 
     toHTML() {
