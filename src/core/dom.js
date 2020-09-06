@@ -14,6 +14,14 @@ class Dom {
         }
     }
 
+    text(data) {
+        if (typeof data == 'string') {
+            this.el.textContent = data
+        } else {
+            return this.el.textContent
+        }
+    }
+
     get style() {
         return this.el.style
     }

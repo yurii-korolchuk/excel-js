@@ -26,6 +26,10 @@ export class Table extends ExcelComponent {
         const current = this.root.find('[data-id="A1"]')
         current.focus()
         this.selection.select(current)
+        this.observer.subscribe('formula-input', data => {
+            const value = $(data).text()
+            this.selection.current.text(value)
+        })
     }
 
     onMousedown(event) {

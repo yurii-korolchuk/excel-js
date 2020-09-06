@@ -1,3 +1,4 @@
+import $ from '@/core/dom'
 import {ExcelComponent} from "core/ExcelComponent";
 
 export class Formula extends ExcelComponent {
@@ -10,7 +11,9 @@ export class Formula extends ExcelComponent {
     }
     static className = 'formula'
 
-    onInput() {}
+    onInput(event) {
+        this.observer.trigger('formula-input', event.target)
+    }
 
     toHTML() {
         return `

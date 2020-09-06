@@ -4,7 +4,7 @@ export class Observer {
     }
 
     trigger(event, ...args) {
-        if(this.listeners[event]) {
+        if (this.listeners[event]) {
             this.listeners[event].forEach(listener => {
                 listener(...args)
             })
