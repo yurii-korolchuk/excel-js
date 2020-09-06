@@ -45,13 +45,21 @@ export class Table extends ExcelComponent {
 
     onKeydown(event) {
         switch (event.code) {
-            case 'Tab':
+            case 'Tab': case 'ArrowRight':
                 event.preventDefault()
-                this.selection.selectNextInRow()
+                this.selection.selectNextInRow(this.root, 1)
                 break
-            case 'Enter':
+            case 'Enter': case 'ArrowDown':
                 event.preventDefault()
-                this.selection.selectNextInCol(this.root)
+                this.selection.selectNextInCol(this.root, 1)
+                break
+            case 'ArrowUp':
+                event.preventDefault()
+                this.selection.selectNextInCol(this.root, -1)
+                break
+            case 'ArrowLeft':
+                event.preventDefault()
+                this.selection.selectNextInRow(this.root, -1)
                 break
         }
     }

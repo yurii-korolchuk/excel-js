@@ -32,41 +32,28 @@ export class TableSelection {
         })
     }
 
-    selectNextInRow() {
-        this.clear()
-        this.current = this.current.nextSibling
-            ? this.current.nextSibling
-            : this.jumpToNextRow()
-        this.select(this.current)
-    }
-
-    jumpToNextRow() {
-        if (this.current.parent.nextSibling) {
-            return this.current.parent.nextSibling.find('[data-cell-index]')
-        } else {
-            return this.reset()
-        }
-    }
-
-    selectNextInCol(root) {
+    selectNextInRow(root, n) {
         const currIndex = this.current.data.cellIndex
-        const currInfo = this.current.data.cellInfo
-        const selector = `[data-cell-index="${+currIndex + 1}"][data-cell-info="${currInfo}"`
+        const currInfo = numberFromChar(this.current.data.cellInfo)
+        const selector = `
+            [data-cell-index="${+currIndex}"][data-cell-info="${String.fromCharCode(currInfo + n)}"
+        `
 
         this.current = root.find(selector)
             ? root.find(selector)
-            : this.jumpToNextCol(root)
+            : this.current
         this.select(this.current)
     }
 
-    jumpToNextCol(root) {
-        const index = numberFromChar(this.current.data.cellInfo)
-        const newIndex = String.fromCharCode(index + 1)
-        if (root.find(`[data-cell-info="${newIndex}"]`)) {
-            return this.current = root.find(`[data-cell-info="${newIndex}"]`)
-        } else {
-            return this.reset()
-        }
+    selectNextInCol(root, n) {
+        const currIndex = this.current.data.cellIndex
+        const currInfo = this.current.data.cellInfo
+        const selector = `[data-cell-index="${+currIndex + n}"][data-cell-info="${currInfo}"`
+
+        this.current = root.find(selector)
+            ? root.find(selector)
+            : this.current
+        this.select(this.current)
     }
 
     reset() {
