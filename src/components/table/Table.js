@@ -26,9 +26,16 @@ export class Table extends ExcelComponent {
         const current = this.root.find('[data-id="A1"]')
         current.focus()
         this.selection.select(current)
-        this.observer.subscribe('formula-input', data => {
+
+        this.$observe('formula-input', data => {
             const value = $(data).text()
             this.selection.current.text(value)
+        })
+
+        this.$observe('formula-unfocus', event => {
+            event.preventDefault()
+            event.target.blur()
+            this.selection.current.focus()
         })
     }
 

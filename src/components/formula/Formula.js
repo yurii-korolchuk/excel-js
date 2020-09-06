@@ -5,14 +5,20 @@ export class Formula extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Formula',
-            listeners: ['input'],
+            listeners: ['input', 'keydown'],
             ...options
         })
     }
     static className = 'formula'
 
     onInput(event) {
-        this.observer.trigger('formula-input', event.target)
+        this.$trigger('formula-input', event.target)
+    }
+
+    onKeydown(event) {
+        if (event.code === 'Enter') {
+            this.$trigger('formula-unfocus', event)
+        }
     }
 
     toHTML() {

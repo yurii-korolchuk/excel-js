@@ -16,7 +16,7 @@ export class Observer {
 
     subscribe(event, callback) {
         this.listeners[event] = this.listeners[event] || []
-        this.listeners[event].push(callback)
+        this.listeners[event] = [...this.listeners[event], callback]
         return () => {
             this.listeners =
                 this.listeners[event].filter(listener => listener !== callback)
