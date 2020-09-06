@@ -14,6 +14,14 @@ class Dom {
         }
     }
 
+    text(data) {
+        if (typeof data == 'string') {
+            this.el.textContent = data
+        } else {
+            return this.el.textContent
+        }
+    }
+
     get style() {
         return this.el.style
     }
@@ -51,6 +59,14 @@ class Dom {
         return this.el.closest(selector)
     }
 
+    find(selector) {
+        if (this.el.querySelector(selector)) {
+            return $(this.el.querySelector(selector))
+        } else {
+            return null
+        }
+    }
+
     findAll(selector) {
         return this.el.querySelectorAll(selector)
     }
@@ -61,6 +77,51 @@ class Dom {
                 this.style[key] = styles[key]
             }
         })
+    }
+
+    addClass(classSelector) {
+        this.el.classList.add(classSelector)
+        return this
+    }
+
+    removeClass(classSelector) {
+        this.el.classList.remove(classSelector)
+        return this
+    }
+
+    addAttr(attr, value = true) {
+        this.el.setAttribute(attr, value)
+        return this
+    }
+
+    removeAttr(attr) {
+        this.el.removeAttribute(attr)
+        return this
+    }
+
+    id() {
+        return this.el.data.id
+    }
+
+    get nextSibling() {
+        if (this.el.nextElementSibling) {
+            return $(this.el.nextElementSibling)
+        } else {
+            return null
+        }
+    }
+
+    get parent() {
+        if (this.el.parentElement) {
+            return $(this.el.parentElement)
+        } else {
+            return null
+        }
+    }
+
+    focus() {
+        this.el.focus()
+        return this
     }
 }
 
