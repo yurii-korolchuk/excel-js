@@ -9,8 +9,11 @@ import './sass/index.sass'
 
 const store = createStore(reducer)
 
-const excel = new Excel('#app', {
-    components: [Header, Toolbar, Formula, Table]
-})
+const excel = new Excel('#app',
+    {
+        components: [Header, Toolbar, Formula, Table]
+    },
+    store
+)
 
 excel.render()
