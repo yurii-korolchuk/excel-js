@@ -8,6 +8,7 @@ import {
     shouldResize
 } from "@/components/table/table.functions";
 import {resize} from "@/components/table/table.functions"
+import * as actions from "@/redux/actions";
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {
@@ -36,15 +37,12 @@ export class Table extends ExcelComponent {
         })
 
         this.$trigger('table-change', this.selection.current.text())
-        this.$subscribe(() => {
-            console.log(this.store.getState())
-        })
     }
 
     async resizeHandler(event) {
         try {
             const data = await resize(this, event)
-            this.$dispatch({type: 'TABLE_RESIZE', data})
+            this.$dispatch(actions.tableResize(data))
         } catch (e) {
             console.warn(e.message)
         }

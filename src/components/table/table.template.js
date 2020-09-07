@@ -5,7 +5,6 @@ const CODES = {
 
 export const stringFromChar = (_, index) => {
     return String.fromCharCode(CODES.A + index)
-
 }
 
 const columnIndex = (el) => {
