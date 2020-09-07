@@ -40,5 +40,6 @@ export class ExcelComponent extends DomListener {
                 unsub()
             })
         }
+        this.store.unsubscribe()
     }
 }

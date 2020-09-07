@@ -7,7 +7,9 @@ import {createStore} from "core/createStore";
 import {reducer} from "@/redux/reducer";
 import './sass/index.sass'
 
-const store = createStore(reducer)
+const store = createStore(reducer, {
+    colState: {}
+})
 
 const excel = new Excel('#app',
     {

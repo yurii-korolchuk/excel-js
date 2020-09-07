@@ -1,13 +1,12 @@
 import {ExcelComponent} from "core/ExcelComponent";
 import {$} from "core/dom";
-import {createTable, stringFromChar} from "@/components/table/table.template";
+import {createTable} from "@/components/table/table.template";
 import {TableSelection} from "@/components/table/TableSelection";
 import {
     isCell,
     section,
     shouldResize
 } from "@/components/table/table.functions";
-import {range, numberFromChar} from "@/components/table/table.functions";
 import {resize} from "@/components/table/table.functions"
 
 export class Table extends ExcelComponent {
@@ -37,11 +36,23 @@ export class Table extends ExcelComponent {
         })
 
         this.$trigger('table-change', this.selection.current.text())
+        this.$subscribe(() => {
+            console.log(this.store.getState())
+        })
+    }
+
+    async resizeHandler(event) {
+        try {
+            const data = await resize(this, event)
+            this.$dispatch({type: 'TABLE_RESIZE', data})
+        } catch (e) {
+            console.warn(e.message)
+        }
     }
 
     onMousedown(event) {
         if (shouldResize(event)) {
-            resize(this, event)
+            this.resizeHandler(event)
         } else if (isCell(event, 'contenteditable')) {
             const target = $(event.target)
             if (event.ctrlKey) {
