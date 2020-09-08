@@ -34,8 +34,9 @@ export const resize = (el, event) => {
                 target.style[position] = ''
 
                 resolve({
-                    id: type ? index : null,
-                    value: +delta + +initialSize + 'px'
+                    id: index,
+                    value: +delta + +initialSize + 'px',
+                    isColResize: type
                 })
 
                 document.onmousemove = null

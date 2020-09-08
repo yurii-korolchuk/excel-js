@@ -4,6 +4,7 @@ const CODES = {
 }
 
 const DEFAULT_WIDTH = '120px'
+const DEFAULT_HEIGHT = '25px'
 
 export const stringFromChar = (_, index) => {
     return String.fromCharCode(CODES.A + index)
@@ -30,13 +31,18 @@ const getRow = (index, length = CODES.Z - CODES.A + 1, state) => {
     const template = (_, info, state) => {
         const id = `${stringFromChar(null, info)}${index}`
         const colId = stringFromChar(null, info)
+        const style = `
+            width: ${state.colState[colId] || DEFAULT_WIDTH};
+            height: ${state.rowState[index] || DEFAULT_HEIGHT}
+            `
+
         return `<div class="cell" 
                      contenteditable 
                      spellcheck="false"
                      data-cell-index=${index}
                      data-cell-info=${colId}
                      data-id=${id}
-                     style="width: ${state.colState[colId] || DEFAULT_WIDTH}"
+                     style="${style}"
                      ></div>`
     }
     const cells = new Array(length)
@@ -45,7 +51,10 @@ const getRow = (index, length = CODES.Z - CODES.A + 1, state) => {
         .join('')
     return `
         <div class="row">
-            <div class="row__index" data-type="resizable" data-index=${index}>
+            <div class="row__index" 
+                 data-type="resizable" 
+                 data-index=${index}
+                 style="height: ${state.rowState[index] || DEFAULT_HEIGHT}">
                 <div class="index">${index}</div> 
                 <div class="row__resize" data-resize="row"></div>
             </div>
