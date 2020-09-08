@@ -5,8 +5,8 @@ import {Formula} from "@/components/formula/Formula";
 import {Table} from "@/components/table/Table";
 import {createStore} from "core/createStore";
 import {reducer} from "@/redux/reducer";
-import './sass/index.sass'
 import {storage} from "core/utils";
+import './sass/index.sass'
 
 const store = createStore(reducer, storage('excel-state'))
 
