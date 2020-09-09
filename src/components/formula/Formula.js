@@ -5,6 +5,7 @@ export class Formula extends ExcelComponent {
         super(root, {
             name: 'Formula',
             listeners: ['input', 'keydown'],
+            subscribers: ['currText'],
             ...options
         })
     }
@@ -14,9 +15,6 @@ export class Formula extends ExcelComponent {
         super.init();
         this.input = this.root.find('#input')
         this.$observe('table-change', data => this.changeInputValue(data))
-        this.$subscribe(state => {
-            this.changeInputValue(state.currText)
-        })
     }
 
     changeInputValue(text) {
@@ -25,6 +23,10 @@ export class Formula extends ExcelComponent {
 
     onInput(event) {
         this.$trigger('formula-input', event.target)
+    }
+
+    storeChanged(changes) {
+        this.changeInputValue(changes.currText)
     }
 
     onKeydown(event) {

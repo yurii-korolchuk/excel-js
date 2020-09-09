@@ -5,7 +5,7 @@ import {TableSelection} from "@/components/table/TableSelection";
 import {
     isCell,
     section,
-    shouldResize
+    shouldResize, tableNavigation
 } from "@/components/table/table.functions";
 import {resize} from "@/components/table/table.functions"
 import * as actions from "@/redux/actions";
@@ -76,24 +76,7 @@ export class Table extends ExcelComponent {
     }
 
     onKeydown(event) {
-        switch (event.code) {
-            case 'Tab': case 'ArrowRight':
-                event.preventDefault()
-                this.changeCell(1, 'selectNextInRow')
-                break
-            case 'Enter': case 'ArrowDown':
-                event.preventDefault()
-                this.changeCell(1, 'selectNextInCol')
-                break
-            case 'ArrowUp':
-                event.preventDefault()
-                this.changeCell(-1, 'selectNextInCol')
-                break
-            case 'ArrowLeft':
-                event.preventDefault()
-                this.changeCell(-1, 'selectNextInRow')
-                break
-        }
+        tableNavigation(this, event)
     }
 
     onInput(event) {

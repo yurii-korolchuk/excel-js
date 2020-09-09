@@ -12,3 +12,11 @@ export const storage = (key, data = null) => {
     }
     localStorage[key] = JSON.stringify(data)
 }
+
+export const areEqual = (a, b) => {
+    if (typeof a === 'object') {
+        return JSON.stringify(a) === JSON.stringify(b)
+    } else {
+        return a === b
+    }
+}

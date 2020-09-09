@@ -46,6 +46,27 @@ export const resize = (el, event) => {
     })
 }
 
+export const tableNavigation = (table, event) => {
+    switch (event.code) {
+        case 'Tab': case 'ArrowRight':
+            event.preventDefault()
+            table.changeCell(1, 'selectNextInRow')
+            break
+        case 'Enter': case 'ArrowDown':
+            event.preventDefault()
+            table.changeCell(1, 'selectNextInCol')
+            break
+        case 'ArrowUp':
+            event.preventDefault()
+            table.changeCell(-1, 'selectNextInCol')
+            break
+        case 'ArrowLeft':
+            event.preventDefault()
+            table.changeCell(-1, 'selectNextInRow')
+            break
+    }
+}
+
 export const section = (el, target, selection) => {
     const current = selection.current
 

@@ -14,6 +14,6 @@ export const reducer = (state, action) => {
             newState[action.data.id] = action.data.value
             return {...state, cellState: newState, currText: action.data.value}
         default:
-            return state
+            return JSON.parse(JSON.stringify(state))
     }
 }
