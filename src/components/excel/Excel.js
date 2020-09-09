@@ -9,7 +9,6 @@ export class Excel {
         this.observer = new Observer()
         this.store = store
         this.storeSubscriber = new StoreSubscriber(this.store)
-
     }
 
     getRoot() {

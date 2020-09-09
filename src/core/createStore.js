@@ -1,4 +1,4 @@
-export const createStore = (reducer, initialState = {colState: {}, rowState: {}}) => {
+export const createStore = (reducer, initialState = {}) => {
     let state = reducer({...initialState}, {type: '__INIT__'})
     let listeners = []
 
