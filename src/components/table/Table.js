@@ -28,7 +28,13 @@ export class Table extends ExcelComponent {
 
         this.$observe('formula-input', data => {
             const value = $(data).text()
+            const id = this.selection.current.id
+            const inputData = {
+                id,
+                value
+            }
             this.selection.current.text(value)
+            this.$dispatch(actions.tableInput(inputData))
         })
 
         this.$observe('formula-unfocus', event => {
@@ -59,6 +65,7 @@ export class Table extends ExcelComponent {
                 section(this, target, this.selection)
             } else {
                 this.selection.select(target)
+                this.$trigger('table-change', target.text())
             }
         }
     }
@@ -90,7 +97,12 @@ export class Table extends ExcelComponent {
     }
 
     onInput(event) {
-        this.$trigger('table-input', $(event.target).text())
+        const target = $(event.target)
+        const data = {
+            id: target.id,
+            value: target.text()
+        }
+        this.$dispatch(actions.tableInput(data))
     }
 
     toHTML() {

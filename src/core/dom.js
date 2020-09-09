@@ -99,8 +99,8 @@ class Dom {
         return this
     }
 
-    id() {
-        return this.el.data.id
+    get id() {
+        return this.data.id
     }
 
     get nextSibling() {

@@ -17,7 +17,8 @@
     "indent": "off",
     "operator-linebreak": "off",
     "no-unused-vars": "warn",
-    "padded-blocks": "warn"
+    "padded-blocks": "warn",
+    "no-debugger": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }

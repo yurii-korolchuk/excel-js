@@ -14,7 +14,9 @@ export class Formula extends ExcelComponent {
         super.init();
         this.input = this.root.find('#input')
         this.$observe('table-change', data => this.changeInputValue(data))
-        this.$observe('table-input', data => this.changeInputValue(data))
+        this.$subscribe(state => {
+            this.changeInputValue(state.currText)
+        })
     }
 
     changeInputValue(text) {

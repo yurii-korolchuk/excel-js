@@ -7,9 +7,12 @@ import {createStore} from "core/createStore";
 import {reducer} from "@/redux/reducer";
 import {storage} from "core/utils";
 import './sass/index.sass'
+
 const initial = storage('excel-state') || {
     colState: {},
-    rowState: {}
+    rowState: {},
+    cellState: {},
+    currText: ''
 }
 const store = createStore(reducer, initial)
 

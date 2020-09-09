@@ -43,12 +43,13 @@ const getRow = (index, length = CODES.Z - CODES.A + 1, state) => {
                      data-cell-info=${colId}
                      data-id=${id}
                      style="${style}"
-                     ></div>`
+                     >${state.cellState[id] || ''}</div>`
     }
     const cells = new Array(length)
         .fill('')
         .map((el, i) => template(el, i, state))
         .join('')
+
     return `
         <div class="row">
             <div class="row__index" 
