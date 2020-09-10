@@ -6,7 +6,8 @@ export class Toolbar extends ExcelStateComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Toolbar',
-            listeners: ['click']
+            listeners: ['click'],
+            ...options
         })
     }
     static className = 'toolbar'
@@ -16,11 +17,28 @@ export class Toolbar extends ExcelStateComponent {
     }
 
     prepare() {
-        this.initState({
+        this.defaultState = {
             textAlign: 'left',
             fontWeight: 'normal',
             fontStyle: 'normal',
             textDecoration: 'none'
+    }
+        this.initState({...this.defaultState})
+    }
+
+    init() {
+        super.init()
+        this.$observe('table-select', cell => {
+            const state = cell.getStyles(['textAlign', 'fontWeight',
+            'fontStyle', 'textDecoration'])
+
+            Object.keys(state).forEach(key => {
+                if (state[key] === '') {
+                    state[key] = this.defaultState[key]
+                }
+            })
+
+            this.setState(state)
         })
     }
 
@@ -28,6 +46,7 @@ export class Toolbar extends ExcelStateComponent {
         const target = $(event.target)
         if (target.data.type === 'button') {
             this.setState(JSON.parse(target.id))
+            this.$trigger('toolbar-select', JSON.parse(target.id))
         }
     }
 

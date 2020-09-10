@@ -9,13 +9,13 @@ export const createToolbar = (state) => {
         {
             className: 'toolbar__text-align-center',
             value: 'format_align_center',
-            active: false,
+            active: state.textAlign === 'center',
             id: {textAlign: 'center'}
         },
         {
             className: 'toolbar__text-align-right',
             value: 'format_align_right',
-            active: false,
+            active: state.textAlign === 'right',
             id: {textAlign: 'right'}
         }
     ]

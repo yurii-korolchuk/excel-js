@@ -43,6 +43,13 @@ export class Table extends ExcelComponent {
         })
 
         this.$trigger('table-change', this.selection.current.text())
+        this.$trigger('table-select', this.selection.current)
+
+        this.$observe('toolbar-select', newStyle => {
+            this.selection.group.forEach(cell => {
+                cell.css(newStyle)
+            })
+        })
     }
 
     async resizeHandler(event) {
@@ -66,6 +73,7 @@ export class Table extends ExcelComponent {
             } else {
                 this.selection.select(target)
                 this.$trigger('table-change', target.text())
+                this.$trigger('table-select', this.selection.current)
             }
         }
     }
@@ -73,6 +81,7 @@ export class Table extends ExcelComponent {
     changeCell(n, method) {
         this.selection[method](this.root, n)
         this.$trigger('table-change', this.selection.current.text())
+        this.$trigger('table-select', this.selection.current)
     }
 
     onKeydown(event) {

@@ -73,9 +73,7 @@ class Dom {
 
     css(styles = {}) {
         Object.keys(styles).forEach(key => {
-            if (this.style[key]) {
-                this.style[key] = styles[key]
-            }
+            this.style[key] = styles[key]
         })
     }
 
@@ -122,6 +120,14 @@ class Dom {
     focus() {
         this.el.focus()
         return this
+    }
+
+    getStyles(styles = []) {
+        const styleObject = {}
+        styles.forEach(item => {
+            styleObject[item] = this.style[item]
+        })
+        return styleObject
     }
 }
 
