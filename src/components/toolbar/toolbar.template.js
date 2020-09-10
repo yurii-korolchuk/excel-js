@@ -1,9 +1,9 @@
-export const createToolbar = () => {
+export const createToolbar = (state) => {
     const textAlignButtons = [
         {
             className: 'toolbar__text-align-left',
             value: 'format_align_left',
-            active: false,
+            active: state.textAlign === 'left',
             id: {textAlign: 'left'}
         },
         {
@@ -24,20 +24,23 @@ export const createToolbar = () => {
         {
             className: 'toolbar__format-bold',
             value: 'format_bold',
-            active: false,
-            id: {fontWeight: 'bold'}
+            active: state.fontWeight === 'bold',
+            id: {fontWeight: state.fontWeight === 'bold' ? 'normal' : 'bold'}
         },
         {
             className: 'toolbar__format-italic',
             value: 'format_italic',
-            active: false,
-            id: {fontStyle: 'italic'}
+            active: state.fontStyle === 'italic',
+            id: {fontStyle: state.fontStyle === 'italic' ? 'normal' : 'italic'}
         },
         {
             className: 'toolbar__format-underline',
             value: 'format_underlined',
-            active: false,
-            id: {textDecoration: 'underline'}
+            active: state.textDecoration === 'underline',
+            id: {
+                textDecoration: state.textDecoration === 'underline'
+                ? 'none' : 'underline'
+            }
         }
     ]
     let groupsArray = []
@@ -59,7 +62,7 @@ class ToolbarGroup {
     buttonsTemplate() {
         const readyButtons = this.buttons.map(btn => {
             return `
-                <button data-type="button" data-='${JSON.stringify(btn.id)}' 
+                <button data-type="button" data-id='${JSON.stringify(btn.id)}' 
                         class="${btn.className} ${btn.active ? 'active' : ''}"
                         >
                     <span data-type="button" 
