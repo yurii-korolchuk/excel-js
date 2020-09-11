@@ -1,3 +1,5 @@
+import {camelToKebab} from "core/utils";
+
 const CODES = {
     A: 65,
     Z: 90
@@ -31,10 +33,10 @@ const getRow = (index, length = CODES.Z - CODES.A + 1, state) => {
     const template = (_, info, state) => {
         const id = `${stringFromChar(null, info)}${index}`
         const colId = stringFromChar(null, info)
-        const style = `
+        let style = `
             width: ${state.colState[colId] || DEFAULT_WIDTH};
-            height: ${state.rowState[index] || DEFAULT_HEIGHT}
-            `
+            height: ${state.rowState[index] || DEFAULT_HEIGHT};`
+        style += ` ${camelToKebab(state.cellStyle[id])}`
 
         return `<div class="cell" 
                      contenteditable 

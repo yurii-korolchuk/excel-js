@@ -1,6 +1,6 @@
-import {$} from "core/dom";
-import {createToolbar} from "@/components/toolbar/toolbar.template";
-import {ExcelStateComponent} from "core/ExcelStateComponent";
+import {$} from "core/dom"
+import {createToolbar} from "@/components/toolbar/toolbar.template"
+import {ExcelStateComponent} from "core/ExcelStateComponent"
 
 export class Toolbar extends ExcelStateComponent {
     constructor(root, options = {}) {
@@ -29,8 +29,7 @@ export class Toolbar extends ExcelStateComponent {
     init() {
         super.init()
         this.$observe('table-select', cell => {
-            const state = cell.getStyles(['textAlign', 'fontWeight',
-            'fontStyle', 'textDecoration'])
+            const state = cell.getStyles([...Object.keys(this.defaultState)])
 
             Object.keys(state).forEach(key => {
                 if (state[key] === '') {

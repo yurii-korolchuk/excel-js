@@ -12,6 +12,7 @@ const initial = storage('excel-state') || {
     colState: {},
     rowState: {},
     cellState: {},
+    cellStyle: {},
     currText: ''
 }
 const store = createStore(reducer, initial)

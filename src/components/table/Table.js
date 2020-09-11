@@ -48,6 +48,15 @@ export class Table extends ExcelComponent {
         this.$observe('toolbar-select', newStyle => {
             this.selection.group.forEach(cell => {
                 cell.css(newStyle)
+                const data = {
+                    id: cell.id,
+                    style: newStyle
+                }
+                try {
+                    this.$dispatch(actions.tableStyle(data))
+                } catch (e) {
+                    console.warn(e.message)
+                }
             })
         })
     }

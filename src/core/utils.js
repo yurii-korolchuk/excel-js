@@ -20,3 +20,17 @@ export const areEqual = (a, b) => {
         return a === b
     }
 }
+
+export const camelToKebab = value => {
+    if (typeof value !== 'object') {
+        return false
+    } else {
+        let style = ''
+        Object.keys(value).forEach(key => {
+            const type = key.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+            style += ` ${type}: ${value[key]};`
+        })
+        return style
+    }
+}
+

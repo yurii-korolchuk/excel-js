@@ -63,6 +63,14 @@ export class TableSelection {
         return $(`[data-id=${TableSelection.resetElemId}]`)
     }
 
+    get ids() {
+        if (this.group.length) {
+            return this.group.map(el => el.id)
+        } else {
+            return false
+        }
+    }
+
     clear() {
         this.group.forEach(item => {
             item.removeAttr(TableSelection.dataSelector)
