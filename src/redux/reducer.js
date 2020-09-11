@@ -1,4 +1,9 @@
-import {TABLE_INPUT, TABLE_RESIZE, TABLE_STYLE} from "@/redux/types";
+import {
+    HEADER_INPUT,
+    TABLE_INPUT,
+    TABLE_RESIZE,
+    TABLE_STYLE
+} from "@/redux/types";
 
 export const reducer = (state, action) => {
     let newState
@@ -20,6 +25,8 @@ export const reducer = (state, action) => {
                 ...action.data.style
             }
             return {...state, cellStyle: newState}
+        case HEADER_INPUT:
+            return {...state, headerName: action.data}
         default:
             return JSON.parse(JSON.stringify(state))
     }

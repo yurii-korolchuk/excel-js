@@ -13,7 +13,8 @@ const initial = storage('excel-state') || {
     rowState: {},
     cellState: {},
     cellStyle: {},
-    currText: ''
+    currText: '',
+    headerName: ''
 }
 const store = createStore(reducer, initial)
 

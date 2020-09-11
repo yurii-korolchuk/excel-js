@@ -1,4 +1,9 @@
-import {TABLE_INPUT, TABLE_RESIZE, TABLE_STYLE} from "@/redux/types";
+import {
+    HEADER_INPUT,
+    TABLE_INPUT,
+    TABLE_RESIZE,
+    TABLE_STYLE
+} from "@/redux/types";
 
 export const tableResize = data => {
     return {
@@ -17,6 +22,13 @@ export const tableInput = data => {
 export const tableStyle = data => {
     return {
         type: TABLE_STYLE,
+        data
+    }
+}
+
+export const headerInput = data => {
+    return {
+        type: HEADER_INPUT,
         data
     }
 }
