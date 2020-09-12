@@ -1,4 +1,4 @@
-import {camelToKebab} from "core/utils";
+import {camelToKebab, parse} from "core/utils";
 
 const CODES = {
     A: 65,
@@ -45,7 +45,7 @@ const getRow = (index, length = CODES.Z - CODES.A + 1, state) => {
                      data-cell-info=${colId}
                      data-id=${id}
                      style="${style}"
-                     >${state.cellState[id] || ''}</div>`
+                     >${parse(state.cellState[id]) || ''}</div>`
     }
     const cells = new Array(length)
         .fill('')

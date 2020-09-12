@@ -1,4 +1,3 @@
-import {$} from "core/dom"
 import {ExcelComponent} from "core/ExcelComponent"
 import * as actions from '@/redux/actions'
 

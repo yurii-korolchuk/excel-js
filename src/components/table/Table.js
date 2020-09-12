@@ -9,6 +9,7 @@ import {
 } from "@/components/table/table.functions";
 import {resize} from "@/components/table/table.functions"
 import * as actions from "@/redux/actions";
+import {parse} from "core/utils"
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {
@@ -33,7 +34,7 @@ export class Table extends ExcelComponent {
                 id,
                 value
             }
-            this.selection.current.text(value)
+            this.selection.current.text(parse(value))
             this.$dispatch(actions.tableInput(inputData))
         })
 

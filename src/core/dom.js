@@ -15,7 +15,7 @@ class Dom {
     }
 
     text(data) {
-        if (typeof data == 'string') {
+        if (typeof data !== 'undefined') {
             this.el.textContent = data
         } else {
             return this.el.textContent

@@ -27,7 +27,10 @@ export const camelToKebab = value => {
     } else {
         let style = ''
         Object.keys(value).forEach(key => {
-            const type = key.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+            const type = key
+                .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                .toLowerCase()
+
             style += ` ${type}: ${value[key]};`
         })
         return style
@@ -42,6 +45,18 @@ export const debounce = (fn, wait) => {
             clearTimeout(timeout)
             fn(...args)
         }, wait)
+    }
+}
+
+export const parse = (value = '') => {
+    if (value.startsWith('=') && typeof value === 'string') {
+        try {
+            return eval(value.slice(1))
+        } catch (e) {
+            console.log('Skipping eval error')
+        }
+    } else {
+        return value
     }
 }
 
