@@ -5,7 +5,7 @@ import {Formula} from "@/components/formula/Formula";
 import {Table} from "@/components/table/Table";
 import {createStore} from "core/createStore";
 import {reducer} from "@/redux/reducer";
-import {storage} from "core/utils";
+import {debounce, storage} from "core/utils";
 import './sass/index.sass'
 
 const initial = storage('excel-state') || {
@@ -18,9 +18,11 @@ const initial = storage('excel-state') || {
 }
 const store = createStore(reducer, initial)
 
-store.subscribe(state => {
+const stateListener = debounce(state => {
     storage('excel-state', state)
-})
+}, 300)
+
+store.subscribe(stateListener)
 
 const excel = new Excel('#app',
     {

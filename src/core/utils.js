@@ -34,3 +34,14 @@ export const camelToKebab = value => {
     }
 }
 
+export const debounce = (fn, wait) => {
+    let timeout
+    return (...args) => {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            clearTimeout(timeout)
+            fn(...args)
+        }, wait)
+    }
+}
+
