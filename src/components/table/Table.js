@@ -1,14 +1,15 @@
 import {ExcelComponent} from "core/ExcelComponent";
 import {$} from "core/dom";
-import {createTable, stringFromChar} from "@/components/table/table.template";
+import {createTable} from "@/components/table/table.template";
 import {TableSelection} from "@/components/table/TableSelection";
 import {
     isCell,
     section,
-    shouldResize
+    shouldResize, tableNavigation
 } from "@/components/table/table.functions";
-import {range, numberFromChar} from "@/components/table/table.functions";
 import {resize} from "@/components/table/table.functions"
+import * as actions from "@/redux/actions";
+import {parse} from "core/utils"
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {
@@ -28,7 +29,13 @@ export class Table extends ExcelComponent {
 
         this.$observe('formula-input', data => {
             const value = $(data).text()
-            this.selection.current.text(value)
+            const id = this.selection.current.id
+            const inputData = {
+                id,
+                value
+            }
+            this.selection.current.text(parse(value))
+            this.$dispatch(actions.tableInput(inputData))
         })
 
         this.$observe('formula-unfocus', event => {
@@ -37,11 +44,36 @@ export class Table extends ExcelComponent {
         })
 
         this.$trigger('table-change', this.selection.current.text())
+        this.$trigger('table-select', this.selection.current)
+
+        this.$observe('toolbar-select', newStyle => {
+            this.selection.group.forEach(cell => {
+                cell.css(newStyle)
+                const data = {
+                    id: cell.id,
+                    style: newStyle
+                }
+                try {
+                    this.$dispatch(actions.tableStyle(data))
+                } catch (e) {
+                    console.warn(e.message)
+                }
+            })
+        })
+    }
+
+    async resizeHandler(event) {
+        try {
+            const data = await resize(this, event)
+            this.$dispatch(actions.tableResize(data))
+        } catch (e) {
+            console.warn(e.message)
+        }
     }
 
     onMousedown(event) {
         if (shouldResize(event)) {
-            resize(this, event)
+            this.resizeHandler(event)
         } else if (isCell(event, 'contenteditable')) {
             const target = $(event.target)
             if (event.ctrlKey) {
@@ -50,6 +82,8 @@ export class Table extends ExcelComponent {
                 section(this, target, this.selection)
             } else {
                 this.selection.select(target)
+                this.$trigger('table-change', target.text())
+                this.$trigger('table-select', this.selection.current)
             }
         }
     }
@@ -57,34 +91,23 @@ export class Table extends ExcelComponent {
     changeCell(n, method) {
         this.selection[method](this.root, n)
         this.$trigger('table-change', this.selection.current.text())
+        this.$trigger('table-select', this.selection.current)
     }
 
     onKeydown(event) {
-        switch (event.code) {
-            case 'Tab': case 'ArrowRight':
-                event.preventDefault()
-                this.changeCell(1, 'selectNextInRow')
-                break
-            case 'Enter': case 'ArrowDown':
-                event.preventDefault()
-                this.changeCell(1, 'selectNextInCol')
-                break
-            case 'ArrowUp':
-                event.preventDefault()
-                this.changeCell(-1, 'selectNextInCol')
-                break
-            case 'ArrowLeft':
-                event.preventDefault()
-                this.changeCell(-1, 'selectNextInRow')
-                break
-        }
+        tableNavigation(this, event)
     }
 
     onInput(event) {
-        this.$trigger('table-input', $(event.target).text())
+        const target = $(event.target)
+        const data = {
+            id: target.id,
+            value: target.text()
+        }
+        this.$dispatch(actions.tableInput(data))
     }
 
     toHTML() {
-        return createTable()
+        return createTable(this.store.getState())
     }
 }

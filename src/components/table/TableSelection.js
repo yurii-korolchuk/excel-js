@@ -35,9 +35,9 @@ export class TableSelection {
     selectNextInRow(root, n) {
         const currIndex = this.current.data.cellIndex
         const currInfo = numberFromChar(this.current.data.cellInfo)
-        const selector = `
-            [data-cell-index="${+currIndex}"][data-cell-info="${String.fromCharCode(currInfo + n)}"
-        `
+        const index = `[data-cell-index="${+currIndex}"]`
+        const info = `[data-cell-info="${String.fromCharCode(currInfo + n)}"`
+        const selector = index + info
 
         this.current = root.find(selector)
             ? root.find(selector)
@@ -48,7 +48,9 @@ export class TableSelection {
     selectNextInCol(root, n) {
         const currIndex = this.current.data.cellIndex
         const currInfo = this.current.data.cellInfo
-        const selector = `[data-cell-index="${+currIndex + n}"][data-cell-info="${currInfo}"`
+        const index = `[data-cell-index="${+currIndex + n}"]`
+        const info = `[data-cell-info="${currInfo}"`
+        const selector = index + info
 
         this.current = root.find(selector)
             ? root.find(selector)
@@ -59,6 +61,14 @@ export class TableSelection {
     reset() {
         this.clear()
         return $(`[data-id=${TableSelection.resetElemId}]`)
+    }
+
+    get ids() {
+        if (this.group.length) {
+            return this.group.map(el => el.id)
+        } else {
+            return false
+        }
     }
 
     clear() {

@@ -15,7 +15,7 @@ class Dom {
     }
 
     text(data) {
-        if (typeof data == 'string') {
+        if (typeof data !== 'undefined') {
             this.el.textContent = data
         } else {
             return this.el.textContent
@@ -73,9 +73,7 @@ class Dom {
 
     css(styles = {}) {
         Object.keys(styles).forEach(key => {
-            if (this.style[key]) {
-                this.style[key] = styles[key]
-            }
+            this.style[key] = styles[key]
         })
     }
 
@@ -99,8 +97,8 @@ class Dom {
         return this
     }
 
-    id() {
-        return this.el.data.id
+    get id() {
+        return this.data.id
     }
 
     get nextSibling() {
@@ -122,6 +120,14 @@ class Dom {
     focus() {
         this.el.focus()
         return this
+    }
+
+    getStyles(styles = []) {
+        const styleObject = {}
+        styles.forEach(item => {
+            styleObject[item] = this.style[item]
+        })
+        return styleObject
     }
 }
 
