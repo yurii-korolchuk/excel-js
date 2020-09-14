@@ -14,8 +14,10 @@ export class Router {
     }
 
     handleHashChange(event) {
-        console.log(event)
-        console.log(ActiveRoute.param)
+        const PageClass = this.routes.excel
+        const page = new PageClass()
+        this.placeholder.append(page.getRoot())
+        page.afterRender()
     }
 
     init() {

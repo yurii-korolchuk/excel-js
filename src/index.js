@@ -8,28 +8,10 @@
 // import {debounce, storage} from "core/utils";
 import {Router} from "core/routing/Router";
 import './sass/index.sass'
-const router = new Router('#app')
-// const initial = storage('excel-state') || {
-//     colState: {},
-//     rowState: {},
-//     cellState: {},
-//     cellStyle: {},
-//     currText: '',
-//     headerName: ''
-// }
-// const store = createStore(reducer, initial)
-//
-// const stateListener = debounce(state => {
-//     storage('excel-state', state)
-// }, 300)
-//
-// store.subscribe(stateListener)
-//
-// const excel = new Excel('#app',
-//     {
-//         components: [Header, Toolbar, Formula, Table]
-//     },
-//     store
-// )
-//
-// excel.render()
+import {DashboardPage} from "core/pages/DashboardPage";
+import {ExcelPage} from "core/pages/ExcelPage";
+const router = new Router('#app', {
+    dashboard: DashboardPage,
+    excel: ExcelPage
+})
+

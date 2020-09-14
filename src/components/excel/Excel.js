@@ -3,8 +3,7 @@ import {Observer} from "core/Observer";
 import {StoreSubscriber} from "core/storeSubscriber";
 
 export class Excel {
-    constructor(containerSelector, {components = []} = {}, store = {}) {
-        this.container = $(containerSelector)
+    constructor({components = []} = {}, store = {}) {
         this.components = components;
         this.observer = new Observer()
         this.store = store
@@ -28,7 +27,6 @@ export class Excel {
     }
 
     render() {
-        this.container.append(this.getRoot())
         this.components.forEach(component => component.init())
         this.storeSubscriber.subscribeComponents(this.components)
     }
