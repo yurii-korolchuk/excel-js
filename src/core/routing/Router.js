@@ -8,20 +8,38 @@ export class Router {
         } else {
             this.placeholder = $(selector)
             this.routes = routes
+            this.page = null
             this.handleHashChange = this.handleHashChange.bind(this)
+            this.handleHashChange()
             this.init()
         }
     }
 
-    handleHashChange(event) {
-        const PageClass = this.routes.excel
-        const page = new PageClass()
-        this.placeholder.append(page.getRoot())
-        page.afterRender()
+    handleHashChange() {
+        if (this.page) {
+            this.page.destroy()
+            this.placeholder.clear()
+        }
+        const pageType = ActiveRoute.param(0)
+        if (this.routes[pageType]) {
+            const PageClass = this.routes[pageType]
+            this.page = new PageClass(ActiveRoute.param(1))
+            this.placeholder.append(this.page.getRoot())
+            this.page.afterRender()
+        } else {
+            this.defaultPage()
+        }
     }
 
     init() {
         window.addEventListener('hashchange', this.handleHashChange)
+    }
+
+    defaultPage() {
+        const PageClass = this.routes.dashboard
+        this.page = new PageClass(ActiveRoute.param(1))
+        this.placeholder.append(this.page.getRoot())
+        this.page.afterRender()
     }
 
     destroy() {

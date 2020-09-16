@@ -3,6 +3,7 @@ import {$} from "core/dom";
 
 export class DashboardPage extends Page {
     getRoot() {
+        const id = Date.now().toString()
         return $.create('div', 'dashboard').html(
             `
                 <div class="dashboard__header">
@@ -11,7 +12,7 @@ export class DashboardPage extends Page {
     
                 <div class="dashboard__new">
                     <div>
-                        <a href="#">Новая Таблица</a>
+                        <a href="#excel/${id}">Новая Таблица</a>
                     </div>
                 </div>
     

@@ -3,7 +3,12 @@ export class ActiveRoute {
         return window.location.hash
     }
 
-    static get param() {
-        return this.hash.split('/')
+    static param(number) {
+        const param = this.hash.split('/')[number]
+        if (number === 0) {
+            return param.slice(1)
+        } else {
+            return param
+        }
     }
 }
