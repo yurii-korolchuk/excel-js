@@ -10,18 +10,22 @@ import {Table} from "@/components/table/Table";
 
 export class ExcelPage extends Page {
     getRoot() {
-        const initial = storage('excel-state') || {
+        const id = this.params
+        const initial = storage(`excel-state-${id}`) || {
             colState: {},
             rowState: {},
             cellState: {},
             cellStyle: {},
             currText: '',
-            headerName: ''
+            headerName: 'Новая таблица',
+            id: this.params
         }
+
         const store = createStore(reducer, initial)
+        storage(`excel-state-${id}`, initial)
 
         const stateListener = debounce(state => {
-            storage('excel-state', state)
+            storage(`excel-state-${id}`, state)
         }, 300)
 
         store.subscribe(stateListener)
