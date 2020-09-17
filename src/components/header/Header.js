@@ -1,6 +1,6 @@
 import {ExcelComponent} from 'core/ExcelComponent'
 import * as actions from '@/redux/actions'
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {ActiveRoute} from 'core/routing/ActiveRoute'
 
 export class Header extends ExcelComponent {

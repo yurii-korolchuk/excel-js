@@ -1,4 +1,4 @@
-class Dom {
+export class Dom {
     constructor(selector) {
         this.el = typeof selector === 'string'
             ? document.querySelector(selector)
@@ -17,6 +17,7 @@ class Dom {
     text(data) {
         if (typeof data !== 'undefined') {
             this.el.textContent = data
+            return this
         } else {
             return this.el.textContent
         }
@@ -85,6 +86,10 @@ class Dom {
     removeClass(classSelector) {
         this.el.classList.remove(classSelector)
         return this
+    }
+
+    get classList() {
+        return this.el.classList
     }
 
     addAttr(attr, value = true) {

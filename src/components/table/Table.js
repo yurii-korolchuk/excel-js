@@ -1,5 +1,5 @@
 import {ExcelComponent} from 'core/ExcelComponent'
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {createTable} from '@/components/table/table.template'
 import {TableSelection} from '@/components/table/TableSelection'
 import {

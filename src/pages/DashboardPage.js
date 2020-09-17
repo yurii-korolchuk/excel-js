@@ -1,5 +1,5 @@
 import {Page} from '@/pages/Page'
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {recordsOnPage} from '@/pages/dashboard.functions'
 
 export class DashboardPage extends Page {

@@ -1,4 +1,4 @@
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {numberFromChar} from '@/components/table/table.functions'
 
 export class TableSelection {
