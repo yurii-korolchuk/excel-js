@@ -1,4 +1,4 @@
-import {capitalize} from 'core/utils'
+import {capitalize} from 'core/utils/utils'
 
 export class DomListener {
     constructor(root, {name = '', listeners = []} = {}) {

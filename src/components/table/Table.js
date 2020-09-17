@@ -9,7 +9,7 @@ import {
 } from '@/components/table/table.functions'
 import {resize} from '@/components/table/table.functions'
 import * as actions from '@/redux/actions'
-import {parse} from 'core/utils'
+import {parse} from 'core/utils/utils'
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {

@@ -1,4 +1,4 @@
-import {storage} from 'core/utils'
+import {storage} from 'core/utils/utils'
 
 const getExcels = () => {
     const tables = []
