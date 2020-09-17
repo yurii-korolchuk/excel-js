@@ -1,22 +1,22 @@
-import {ExcelComponent} from "core/ExcelComponent";
-import {$} from "core/dom";
-import {createTable} from "@/components/table/table.template";
-import {TableSelection} from "@/components/table/TableSelection";
+import {ExcelComponent} from 'core/ExcelComponent'
+import {$} from 'core/dom'
+import {createTable} from '@/components/table/table.template'
+import {TableSelection} from '@/components/table/TableSelection'
 import {
     isCell,
     section,
-    shouldResize, tableNavigation
-} from "@/components/table/table.functions";
-import {resize} from "@/components/table/table.functions"
-import * as actions from "@/redux/actions";
-import {parse} from "core/utils"
+    shouldResize, tableNavigation,
+} from '@/components/table/table.functions'
+import {resize} from '@/components/table/table.functions'
+import * as actions from '@/redux/actions'
+import {parse} from 'core/utils'
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Table',
             listeners: ['mousedown', 'keydown', 'input'],
-            ...options
+            ...options,
         })
     }
     static className = 'table'
@@ -32,7 +32,7 @@ export class Table extends ExcelComponent {
             const id = this.selection.current.id
             const inputData = {
                 id,
-                value
+                value,
             }
             this.selection.current.text(parse(value))
             this.$dispatch(actions.tableInput(inputData))
@@ -51,7 +51,7 @@ export class Table extends ExcelComponent {
                 cell.css(newStyle)
                 const data = {
                     id: cell.id,
-                    style: newStyle
+                    style: newStyle,
                 }
                 try {
                     this.$dispatch(actions.tableStyle(data))
@@ -102,7 +102,7 @@ export class Table extends ExcelComponent {
         const target = $(event.target)
         const data = {
             id: target.id,
-            value: target.text()
+            value: target.text(),
         }
         this.$dispatch(actions.tableInput(data))
     }

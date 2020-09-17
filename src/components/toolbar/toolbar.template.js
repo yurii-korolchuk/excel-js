@@ -4,20 +4,20 @@ export const createToolbar = (state) => {
             className: 'toolbar__text-align-left',
             value: 'format_align_left',
             active: state.textAlign === 'left',
-            id: {textAlign: 'left'}
+            id: {textAlign: 'left'},
         },
         {
             className: 'toolbar__text-align-center',
             value: 'format_align_center',
             active: state.textAlign === 'center',
-            id: {textAlign: 'center'}
+            id: {textAlign: 'center'},
         },
         {
             className: 'toolbar__text-align-right',
             value: 'format_align_right',
             active: state.textAlign === 'right',
-            id: {textAlign: 'right'}
-        }
+            id: {textAlign: 'right'},
+        },
     ]
 
     const textDecorationButtons = [
@@ -25,13 +25,13 @@ export const createToolbar = (state) => {
             className: 'toolbar__format-bold',
             value: 'format_bold',
             active: state.fontWeight === 'bold',
-            id: {fontWeight: state.fontWeight === 'bold' ? 'normal' : 'bold'}
+            id: {fontWeight: state.fontWeight === 'bold' ? 'normal' : 'bold'},
         },
         {
             className: 'toolbar__format-italic',
             value: 'format_italic',
             active: state.fontStyle === 'italic',
-            id: {fontStyle: state.fontStyle === 'italic' ? 'normal' : 'italic'}
+            id: {fontStyle: state.fontStyle === 'italic' ? 'normal' : 'italic'},
         },
         {
             className: 'toolbar__format-underline',
@@ -39,9 +39,9 @@ export const createToolbar = (state) => {
             active: state.textDecoration === 'underline',
             id: {
                 textDecoration: state.textDecoration === 'underline'
-                ? 'none' : 'underline'
-            }
-        }
+                ? 'none' : 'underline',
+            },
+        },
     ]
     let groupsArray = []
     groupsArray = createNewGroup(

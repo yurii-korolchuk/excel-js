@@ -1,9 +1,10 @@
 import {
+    CHANGE_TIME,
     HEADER_INPUT,
     TABLE_INPUT,
     TABLE_RESIZE,
-    TABLE_STYLE
-} from "@/redux/types";
+    TABLE_STYLE,
+} from '@/redux/types'
 
 export const reducer = (state, action) => {
     let newState
@@ -22,11 +23,13 @@ export const reducer = (state, action) => {
             newState = state.cellStyle || {}
             newState[action.data.id] = {
                 ...newState[action.data.id],
-                ...action.data.style
+                ...action.data.style,
             }
             return {...state, cellStyle: newState}
         case HEADER_INPUT:
             return {...state, headerName: action.data}
+        case CHANGE_TIME:
+            return {...state, time: new Date().toJSON()}
         default:
             return JSON.parse(JSON.stringify(state))
     }

@@ -1,5 +1,5 @@
-import {$} from "core/dom";
-import {numberFromChar} from "@/components/table/table.functions";
+import {$} from 'core/dom'
+import {numberFromChar} from '@/components/table/table.functions'
 
 export class TableSelection {
     static dataSelector = 'data-selected'

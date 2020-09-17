@@ -1,13 +1,13 @@
-import {$} from "core/dom"
-import {createToolbar} from "@/components/toolbar/toolbar.template"
-import {ExcelStateComponent} from "core/ExcelStateComponent"
+import {$} from 'core/dom'
+import {createToolbar} from '@/components/toolbar/toolbar.template'
+import {ExcelStateComponent} from 'core/ExcelStateComponent'
 
 export class Toolbar extends ExcelStateComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Toolbar',
             listeners: ['click'],
-            ...options
+            ...options,
         })
     }
     static className = 'toolbar'
@@ -21,7 +21,7 @@ export class Toolbar extends ExcelStateComponent {
             textAlign: 'left',
             fontWeight: 'normal',
             fontStyle: 'normal',
-            textDecoration: 'none'
+            textDecoration: 'none',
     }
         this.initState({...this.defaultState})
     }

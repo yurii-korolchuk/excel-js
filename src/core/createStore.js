@@ -8,7 +8,7 @@ export const createStore = (reducer, initialState = {}) => {
             return {
                 unsubscribe() {
                     listeners = listeners.filter(listen => listen !== fn)
-                }
+                },
             }
         },
 
@@ -19,6 +19,6 @@ export const createStore = (reducer, initialState = {}) => {
 
         getState() {
             return state
-        }
+        },
     }
 }
