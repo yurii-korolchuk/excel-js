@@ -59,7 +59,6 @@ describe('camelToKebab:', () => {
         const tmp = {
             textAlign : 'center'
         }
-        console.log(camelToKebab(tmp))
         expect(camelToKebab(tmp)).toBe(' text-align: center;')
     })
 })

@@ -1,9 +1,9 @@
-import {$} from 'core/dom'
-import {ActiveRoute} from 'core/routing/ActiveRoute'
+import {$} from '../dom'
+import {ActiveRoute} from './ActiveRoute'
 
 export class Router {
     constructor(selector = '', routes) {
-        if (!selector || document.querySelector(selector) === null) {
+        if (!selector) {
             throw new Error('Please provide a valid placeholder for Router')
         } else {
             this.placeholder = $(selector)
