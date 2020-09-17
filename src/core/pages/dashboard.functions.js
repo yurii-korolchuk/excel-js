@@ -6,31 +6,21 @@ const getExcels = () => {
         const key = localStorage.key(i)
         if (key.includes('excel')) {
             tables.push(storage(key))
-        } else {
-            continue
         }
     }
     return tables
 }
 
-const formatDate = (date) => {
-    return +date < 10 ? `0${date}` : date
-}
-
-const recordsTemplate = (name, date) => {
+const recordsTemplate = (name, date, id) => {
     const recordName = name || 'Новая таблица'
-    const visitDate = new Date(+date)
-    const day = formatDate(visitDate.getDate())
-    const month = formatDate(visitDate.getMonth() + 1)
-    const year = visitDate.getFullYear()
-    const recordDate = `${day}.${month}.${year}`
+    const visitDate = new Date(date).toLocaleDateString()
+        + ' | ' + new Date(date).toLocaleTimeString()
+
     return `
-        <li class="dashboard__list-item ">
-            <div class="name">
-                ${name}
-            </div>
+        <li class="dashboard__list-item">
+            <a class="name" href="#excel/${id}">${recordName}</a>
             <div class="date">
-                ${recordDate}
+                ${visitDate}
             </div>
         </li>
         `
@@ -41,20 +31,20 @@ const recordsToHtml = () => {
     if (!records.length) {
         return '<p>Таблицы не найдены</p>'
     }
-    console.log(records)
+
     return records.map(el => {
-        return recordsTemplate(el.headerName, el.id)
+        return recordsTemplate(el.headerName, el.time, el.id)
     }).join('')
 }
 
 export const recordsOnPage = () => {
     return `
         <ul class="dashboard__list">
-                <div class="dashboard__list-date">
-                    <div>Название</div>
-                    <div>Дата открытия</div>
-                </div>
-                ${recordsToHtml()}
-            </ul>
+            <div class="dashboard__list-date">
+                <div>Название</div>
+                <div>Дата открытия</div>
+            </div>
+            ${recordsToHtml()}
+        </ul>
         `
 }

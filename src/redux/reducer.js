@@ -1,4 +1,5 @@
 import {
+    CHANGE_TIME,
     HEADER_INPUT,
     TABLE_INPUT,
     TABLE_RESIZE,
@@ -27,6 +28,8 @@ export const reducer = (state, action) => {
             return {...state, cellStyle: newState}
         case HEADER_INPUT:
             return {...state, headerName: action.data}
+        case CHANGE_TIME:
+            return {...state, time: new Date().toJSON()}
         default:
             return JSON.parse(JSON.stringify(state))
     }

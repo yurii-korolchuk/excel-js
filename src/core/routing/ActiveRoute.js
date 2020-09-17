@@ -11,4 +11,10 @@ export class ActiveRoute {
             return param
         }
     }
+
+    static navigate(path = '') {
+        if (typeof path === 'string') {
+            window.location.hash = path
+        }
+    }
 }

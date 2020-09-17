@@ -1,6 +1,7 @@
 import {$} from 'core/dom'
 import {Observer} from "core/Observer";
 import {StoreSubscriber} from "core/storeSubscriber";
+import {changeTime} from "@/redux/actions";
 
 export class Excel {
     constructor({components = []} = {}, store = {}) {
@@ -29,6 +30,7 @@ export class Excel {
     render() {
         this.components.forEach(component => component.init())
         this.storeSubscriber.subscribeComponents(this.components)
+        this.store.dispatch(changeTime())
     }
 
     destroy() {

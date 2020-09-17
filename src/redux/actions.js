@@ -1,4 +1,5 @@
 import {
+    CHANGE_TIME,
     HEADER_INPUT,
     TABLE_INPUT,
     TABLE_RESIZE,
@@ -30,5 +31,11 @@ export const headerInput = data => {
     return {
         type: HEADER_INPUT,
         data
+    }
+}
+
+export const changeTime = () => {
+    return {
+        type: CHANGE_TIME
     }
 }

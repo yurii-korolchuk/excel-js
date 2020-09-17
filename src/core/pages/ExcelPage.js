@@ -18,7 +18,8 @@ export class ExcelPage extends Page {
             cellStyle: {},
             currText: '',
             headerName: 'Новая таблица',
-            id: this.params
+            id: this.params,
+            time: new Date().toJSON()
         }
 
         const store = createStore(reducer, initial)
