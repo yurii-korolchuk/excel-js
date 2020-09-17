@@ -1,4 +1,4 @@
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {createToolbar} from '@/components/toolbar/toolbar.template'
 import {ExcelStateComponent} from 'core/ExcelStateComponent'
 

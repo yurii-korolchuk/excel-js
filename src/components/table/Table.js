@@ -1,5 +1,5 @@
 import {ExcelComponent} from 'core/ExcelComponent'
-import {$} from 'core/dom'
+import {$} from 'core/dom/dom'
 import {createTable} from '@/components/table/table.template'
 import {TableSelection} from '@/components/table/TableSelection'
 import {
@@ -9,7 +9,7 @@ import {
 } from '@/components/table/table.functions'
 import {resize} from '@/components/table/table.functions'
 import * as actions from '@/redux/actions'
-import {parse} from 'core/utils'
+import {parse} from 'core/utils/utils'
 
 export class Table extends ExcelComponent {
     constructor(root, options = {}) {

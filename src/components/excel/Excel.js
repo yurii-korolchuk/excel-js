@@ -1,5 +1,5 @@
-import {$} from 'core/dom'
-import {Observer} from 'core/Observer'
+import {$} from 'core/dom/dom'
+import {Observer} from 'core/observer/Observer'
 import {StoreSubscriber} from 'core/storeSubscriber'
 import {changeTime} from '@/redux/actions'
 

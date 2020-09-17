@@ -1,4 +1,4 @@
-import {camelToKebab, parse} from 'core/utils'
+import {camelToKebab, parse} from 'core/utils/utils'
 
 const CODES = {
     A: 65,
