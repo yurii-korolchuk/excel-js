@@ -1,12 +1,12 @@
-import {Page} from "core/pages/Page";
-import {debounce, storage} from "core/utils";
-import {createStore} from "core/createStore";
-import {reducer} from "@/redux/reducer";
-import {Excel} from "@/components/excel/Excel";
-import {Header} from "@/components/header/Header";
-import {Toolbar} from "@/components/toolbar/Toolbar";
-import {Formula} from "@/components/formula/Formula";
-import {Table} from "@/components/table/Table";
+import {Page} from 'core/pages/Page'
+import {debounce, storage} from 'core/utils'
+import {createStore} from 'core/createStore'
+import {reducer} from '@/redux/reducer'
+import {Excel} from '@/components/excel/Excel'
+import {Header} from '@/components/header/Header'
+import {Toolbar} from '@/components/toolbar/Toolbar'
+import {Formula} from '@/components/formula/Formula'
+import {Table} from '@/components/table/Table'
 
 export class ExcelPage extends Page {
     getRoot() {
@@ -19,7 +19,7 @@ export class ExcelPage extends Page {
             currText: '',
             headerName: 'Новая таблица',
             id: this.params,
-            time: new Date().toJSON()
+            time: new Date().toJSON(),
         }
 
         const store = createStore(reducer, initial)
@@ -33,9 +33,9 @@ export class ExcelPage extends Page {
 
         this.excel = new Excel(
             {
-                components: [Header, Toolbar, Formula, Table]
+                components: [Header, Toolbar, Formula, Table],
             },
-            store
+            store,
         )
 
         return this.excel.getRoot()

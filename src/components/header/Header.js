@@ -1,14 +1,14 @@
-import {ExcelComponent} from "core/ExcelComponent"
+import {ExcelComponent} from 'core/ExcelComponent'
 import * as actions from '@/redux/actions'
-import {$} from "core/dom";
-import {ActiveRoute} from "core/routing/ActiveRoute";
+import {$} from 'core/dom'
+import {ActiveRoute} from 'core/routing/ActiveRoute'
 
 export class Header extends ExcelComponent {
     constructor(root, options = {}) {
         super(root, {
             name: 'Header',
             listeners: ['input', 'click'],
-            ...options
+            ...options,
         })
     }
 

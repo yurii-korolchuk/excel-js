@@ -1,4 +1,4 @@
-import {ExcelComponent} from "core/ExcelComponent";
+import {ExcelComponent} from 'core/ExcelComponent'
 
 export class Formula extends ExcelComponent {
     constructor(root, options = {}) {
@@ -6,7 +6,7 @@ export class Formula extends ExcelComponent {
             name: 'Formula',
             listeners: ['input', 'keydown'],
             subscribers: ['currText'],
-            ...options
+            ...options,
         })
     }
     static className = 'formula'

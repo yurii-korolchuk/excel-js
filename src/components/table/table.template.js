@@ -1,8 +1,8 @@
-import {camelToKebab, parse} from "core/utils";
+import {camelToKebab, parse} from 'core/utils'
 
 const CODES = {
     A: 65,
-    Z: 90
+    Z: 90,
 }
 
 const DEFAULT_WIDTH = '120px'

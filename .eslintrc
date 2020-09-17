@@ -12,13 +12,12 @@
     "require-jsdoc": "off",
     "eol-last": "off",
     "linebreak-style": "off",
-    "quotes": "off",
-    "comma-dangle": "off",
+    "quotes": "warn",
+    "comma-dangle": "warn",
     "indent": "off",
     "operator-linebreak": "off",
     "no-unused-vars": "warn",
-    "padded-blocks": "warn",
-    "no-debugger": "off"
+    "padded-blocks": "warn"
   },
   "extends": ["eslint:recommended", "google"]
 }

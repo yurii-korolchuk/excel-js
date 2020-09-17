@@ -1,4 +1,4 @@
-import {$} from "core/dom";
+import {$} from 'core/dom'
 
 export const resize = (el, event) => {
     event.preventDefault()
@@ -36,7 +36,7 @@ export const resize = (el, event) => {
                 resolve({
                     id: index,
                     value: +delta + +initialSize + 'px',
-                    isColResize: type
+                    isColResize: type,
                 })
 
                 document.onmousemove = null

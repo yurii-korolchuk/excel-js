@@ -4,7 +4,8 @@ export class Page {
     }
 
     getRoot() {
-        throw new Error(`No implementation provided for getRoot method in ${this}`)
+        const msg = `No implementation provided for getRoot method in ${this}`
+        throw new Error(msg)
     }
 
     afterRender() {}

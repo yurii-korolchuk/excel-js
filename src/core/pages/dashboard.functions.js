@@ -1,4 +1,4 @@
-import {storage} from "core/utils";
+import {storage} from 'core/utils'
 
 const getExcels = () => {
     const tables = []
@@ -13,8 +13,8 @@ const getExcels = () => {
 
 const recordsTemplate = (name, date, id) => {
     const recordName = name || 'Новая таблица'
-    const visitDate = new Date(date).toLocaleDateString()
-        + ' | ' + new Date(date).toLocaleTimeString()
+    const visitDate = new Date(date).toLocaleDateString() +
+        ' | ' + new Date(date).toLocaleTimeString()
 
     return `
         <li class="dashboard__list-item">
